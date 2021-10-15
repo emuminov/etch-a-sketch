@@ -1,24 +1,28 @@
 const drawingAreaSizePicker = document.querySelector('#drawing-area-size-picker');
+const drawingAreaDiv = document.querySelector('#drawing-area');
 const colorPicker = document.querySelector('#color-picker');
-const numberOfDivs = ``;
-let labelForDrawingAreaSize = document.querySelector('[for=drawing-area-size-picker]');
+const labelForDrawingAreaSize = document.querySelector('[for=drawing-area-size-picker]');
+
 let chosenColor = document.querySelector('#color-picker').value;
 
-function generatePixelDivs(numberOfDivs) {
-  let drawingAreaDiv = document.querySelector('#drawing-area');
-  let sizeOfPixel  = 500 / numberOfDivs + 'px';
+addEventListeners();
+refreshInputLabel();
+generatePixelDivs();
 
-  for (let i = 0; i < (numberOfDivs ** 2) ; i++) {
+function generatePixelDivs() {
+  drawingAreaDiv.innerHTML = '';
+
+  let numberOfDivs = drawingAreaSizePicker.value;
+  let sizeOfPixel  = (500 / numberOfDivs) + 'px';
+
+  for (let i = 0; i < (numberOfDivs ** 2); i++) {
     let drawingAreaPixel = document.createElement('div');
-    drawingAreaPixel.id = 'div' + i;
     drawingAreaPixel.style.cssText = `background-color: white;
       width: ${sizeOfPixel};
-      height: ${sizeOfPixel}`
+      height: ${sizeOfPixel};`
     drawingAreaPixel.addEventListener('mouseover', changePixelColor);
 
-    refreshInputLabel();
     drawingAreaDiv.appendChild(drawingAreaPixel);
-    // console.log(i);
   }
 }
 
@@ -35,6 +39,8 @@ function refreshInputLabel() {
   labelForDrawingAreaSize.textContent = `${valueOfInput}x${valueOfInput}`;
 }
 
-drawingAreaSizePicker.addEventListener('input', refreshInputLabel);
-colorPicker.addEventListener('input', changeColor);
-generatePixelDivs(16);
+function addEventListeners() {
+  drawingAreaSizePicker.addEventListener('input', refreshInputLabel);
+  drawingAreaSizePicker.addEventListener('input', generatePixelDivs);
+  colorPicker.addEventListener('input', changeColor);
+}
