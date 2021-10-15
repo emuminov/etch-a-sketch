@@ -3,13 +3,14 @@ const numberOfDivs = ``;
 
 function fillDrawingPageWithDivs(numberOfDivs) {
   let drawingAreaDiv = document.querySelector('#drawing-area');
+  let sizeOfPixel  = 500 / numberOfDivs + 'px';
 
   for (let i = 0; i < (numberOfDivs ** 2) ; i++) {
     let drawingAreaPixel = document.createElement('div');
     drawingAreaPixel.id = 'div' + i;
     drawingAreaPixel.style.cssText = `background-color: black;
-      width: ${500 / numberOfDivs}px;
-      height: ${500 / numberOfDivs}px`
+      width: ${sizeOfPixel};
+      height: ${sizeOfPixel}`
     drawingAreaPixel.addEventListener('mouseover', changePixelColor);
 
     drawingAreaDiv.appendChild(drawingAreaPixel);
