@@ -37,9 +37,10 @@ body {
 }
 
 .container {
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
-  margin: 16px 144px;
+  gap: 32px;
+  margin: 32px 144px;
 }
 
 .wrapper {
@@ -65,15 +66,19 @@ body {
 }
 
 .button {
-  background-color: #2B2A80;
+  background-color: #2B2A65;
   color: white;
   padding: 8px 80px;
   border-radius: 4px;
-  transition: 0.2s;
+  transition: 0.4s;
 }
 
 .button:hover {
-  background-color: #8B8A95;
+  background-color: #3B8A95;
+}
+
+.button-active {
+  background-color: #2B3A99;
 }
 
 .header-heading {

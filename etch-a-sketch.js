@@ -4,10 +4,17 @@ const drawingAreaDiv = document.querySelector('#drawing-area');
 const labelForDrawingAreaSize = document.querySelector('[for=drawing-area-size-picker]');
 const colorPickerBrush = document.querySelector('#color-picker-brush');
 const colorPickerBackground = document.querySelector('#color-picker-background');
+
+const buttons = document.querySelectorAll('[data-mode]');
+const coloringButton = document.querySelector('[data-mode="rainbow"]');
+const rainbowButton = document.querySelector('[data-mode="rainbow"]');
 const eraseButton = document.querySelector('#erase-button');
 
 let chosenBrushColor = colorPickerBrush.value;
 let chosenBackgroundColor = colorPickerBackground.value; 
+
+const RAINBOW_COLORS = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+let mode = 'rainbow';
 
 addEventListeners();
 refreshInputLabel();
@@ -36,7 +43,15 @@ function generatePixelDivs() {
 
 function changePixelColor(e) {
   if (e.buttons > 0) {
-    e.target.style.backgroundColor = chosenBrushColor;
+    if (mode === 'coloring') {
+      e.target.style.backgroundColor = chosenBrushColor;
+    } else if (mode === 'rainbow') {
+      let rainbowColor = RAINBOW_COLORS[Math.ceil(Math.random() * 7) - 1];
+      e.target.style.backgroundColor = rainbowColor;
+      rainbowButton.style.backgroundColor = rainbowColor;
+    } else if (mode === 'erasing') {
+      e.target.style.backgroundColor = '';
+    }
   }
 }
 
@@ -54,10 +69,20 @@ function refreshInputLabel() {
   labelForDrawingAreaSize.textContent = `${valueOfInput}x${valueOfInput}`;
 }
 
+function changeMode(e) {
+  rainbowButton.style.backgroundColor = '';
+  buttons.forEach(button => button.classList.remove('button-active'));
+  mode = e.target.dataset.mode;
+  e.target.classList.add('button-active');
+}
+
 function addEventListeners() {
   drawingAreaSizePicker.addEventListener('input', refreshInputLabel);
   drawingAreaSizePicker.addEventListener('input', generatePixelDivs);
+
   colorPickerBrush.addEventListener('input', changeBrushColor);
   colorPickerBackground.addEventListener('input', changeBackgroundColor);
+
+  buttons.forEach(button => button.addEventListener('click', changeMode));
   eraseButton.addEventListener('click', generatePixelDivs);
 }
