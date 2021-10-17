@@ -3,6 +3,7 @@ body {
 }
 
 .container {
+  display: flex;
   margin: 16px 32px;
 }
 
@@ -10,7 +11,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   background-color: White;
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
 }
 
+.pixel {
+  user-select: none;
+  user-drag: none;
+}

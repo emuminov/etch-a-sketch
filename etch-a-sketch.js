@@ -13,21 +13,26 @@ function generatePixelDivs() {
   drawingAreaDiv.innerHTML = '';
 
   let numberOfDivs = drawingAreaSizePicker.value;
-  let sizeOfPixel  = (500 / numberOfDivs) + 'px';
+  let sizeOfPixel  = (400 / numberOfDivs) + 'px';
 
   for (let i = 0; i < (numberOfDivs ** 2); i++) {
     let drawingAreaPixel = document.createElement('div');
+    drawingAreaPixel.id = 'div' + i;
+    drawingAreaPixel.classList.add('pixel');
     drawingAreaPixel.style.cssText = `background-color: white;
       width: ${sizeOfPixel};
       height: ${sizeOfPixel};`
-    drawingAreaPixel.addEventListener('mouseover', changePixelColor);
+    drawingAreaPixel.addEventListener('mouseenter', changePixelColor);
+    drawingAreaPixel.addEventListener('mousedown', changePixelColor);
 
     drawingAreaDiv.appendChild(drawingAreaPixel);
   }
 }
 
 function changePixelColor(e) {
-  e.target.style.backgroundColor = chosenColor;
+  if (e.buttons > 0) {
+    e.target.style.backgroundColor = chosenColor;
+  }
 }
 
 function changeColor(e) {

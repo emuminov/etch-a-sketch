@@ -7,17 +7,30 @@
   <script src="etch-a-sketch.js" defer></script>
 </head>
 <body>
-  <div class="container">
 
-    <input id="color-picker" type="color" value="#000000">
-    <label for="color-picker">Choose color</label>
+  <header></header>
 
-    <input id="drawing-area-size-picker" type="range" min="10" max="50" step="10">
-    <label for="drawing-area-size-picker"></label>
+  <main class="container">
+
+    <div class="pickers">
+      <div class="color-picker">
+        <input id="color-picker" type="color" value="#000000">
+        <label for="color-picker">Choose color</label>
+      </div>
+
+      <div class="size-picker">
+        <input id="drawing-area-size-picker" type="range" min="10" max="50" step="10">
+        <label for="drawing-area-size-picker"></label>
+      </div>
+    </div>
 
     <div id="drawing-area" class="drawing-area">
 
     </div>
-  </div>
+
+  </main>
+
+  <footer></footer>
+
 </body>
 </html>
