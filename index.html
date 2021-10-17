@@ -8,24 +8,40 @@
 </head>
 <body>
 
-  <header></header>
+  <header class="header">
+    <h1 class="header-heading">Etch-a-sketch!</h1>
+    <p>Hold a mouse button to draw!</p>
+  </header>
 
   <main class="container">
 
-    <div class="pickers">
-      <div class="color-picker">
-        <input id="color-picker" type="color" value="#000000">
-        <label for="color-picker">Choose color</label>
+    <div class="menu">
+
+      <div class="wrapper pickers">
+        <div class="color-picker">
+          <input id="color-picker-brush" type="color" value="#000000">
+          <label for="color-picker-bursh">Brush</label>
+        </div>
+
+        <div class="color-picker">
+          <input id="color-picker-background" type="color" value="#C9C9C9">
+          <label for="color-picker-background">Background</label>
+        </div>
+
+        <div class="size-picker">
+          <input id="drawing-area-size-picker" type="range" min="10" max="50" step="10">
+          <label for="drawing-area-size-picker"></label>
+        </div>
       </div>
 
-      <div class="size-picker">
-        <input id="drawing-area-size-picker" type="range" min="10" max="50" step="10">
-        <label for="drawing-area-size-picker"></label>
+      <div class="buttons">
+        <button id="erase-button" class="button">Erase</button>
       </div>
     </div>
 
-    <div id="drawing-area" class="drawing-area">
-
+    <div class="wrapper">
+      <div id="drawing-area" class="drawing-area">
+      </div>
     </div>
 
   </main>

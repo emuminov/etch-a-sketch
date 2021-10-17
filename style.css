@@ -1,21 +1,71 @@
 body {
-  background-color: Gray;
+  background-color: #2B2A33;
+  color: white;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2B2A46;
+  border-bottom: 1px solid black;
 }
 
 .container {
   display: flex;
-  margin: 16px 32px;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 16px 96px;
+}
+
+.wrapper {
+  padding: 32px;
+  background-color: #2B2A46;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.pickers,
+.menu,
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu {
+  align-items: center;
 }
 
 .drawing-area {
   display: flex;
   flex-wrap: wrap;
-  background-color: White;
   height: 400px;
   width: 400px;
+  border: 1px solid black;
+}
+
+.button {
+  border: 1px solid black;
+  background-color: #2B2A80;
+  color: white;
+  padding: 8px 80px;
+  border-radius: 4px;
+  transition: 0.27s;
+}
+
+.button:hover {
+  background-color: #8B8A95;
 }
 
 .pixel {
   user-select: none;
   user-drag: none;
+  transition: 0.2s;
+}
+
+.header-heading {
+  margin-bottom: 0;
 }

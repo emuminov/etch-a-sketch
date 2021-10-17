@@ -1,13 +1,18 @@
 const drawingAreaSizePicker = document.querySelector('#drawing-area-size-picker');
 const drawingAreaDiv = document.querySelector('#drawing-area');
-const colorPicker = document.querySelector('#color-picker');
-const labelForDrawingAreaSize = document.querySelector('[for=drawing-area-size-picker]');
 
-let chosenColor = document.querySelector('#color-picker').value;
+const labelForDrawingAreaSize = document.querySelector('[for=drawing-area-size-picker]');
+const colorPickerBrush = document.querySelector('#color-picker-brush');
+const colorPickerBackground = document.querySelector('#color-picker-background');
+const eraseButton = document.querySelector('#erase-button');
+
+let chosenBrushColor = colorPickerBrush.value;
+let chosenBackgroundColor = colorPickerBackground.value; 
 
 addEventListeners();
 refreshInputLabel();
 generatePixelDivs();
+changeBackgroundColor();
 
 function generatePixelDivs() {
   drawingAreaDiv.innerHTML = '';
@@ -19,7 +24,7 @@ function generatePixelDivs() {
     let drawingAreaPixel = document.createElement('div');
     drawingAreaPixel.id = 'div' + i;
     drawingAreaPixel.classList.add('pixel');
-    drawingAreaPixel.style.cssText = `background-color: white;
+    drawingAreaPixel.style.cssText = `
       width: ${sizeOfPixel};
       height: ${sizeOfPixel};`
     drawingAreaPixel.addEventListener('mouseenter', changePixelColor);
@@ -31,12 +36,17 @@ function generatePixelDivs() {
 
 function changePixelColor(e) {
   if (e.buttons > 0) {
-    e.target.style.backgroundColor = chosenColor;
+    e.target.style.backgroundColor = chosenBrushColor;
   }
 }
 
-function changeColor(e) {
-  chosenColor = e.target.value;
+function changeBrushColor() {
+  chosenBrushColor = colorPickerBrush.value;
+}
+
+function changeBackgroundColor() {
+  chosenBackgroundColor = colorPickerBackground.value;
+  drawingAreaDiv.style.backgroundColor = chosenBackgroundColor;
 }
 
 function refreshInputLabel() {
@@ -47,5 +57,7 @@ function refreshInputLabel() {
 function addEventListeners() {
   drawingAreaSizePicker.addEventListener('input', refreshInputLabel);
   drawingAreaSizePicker.addEventListener('input', generatePixelDivs);
-  colorPicker.addEventListener('input', changeColor);
+  colorPickerBrush.addEventListener('input', changeBrushColor);
+  colorPickerBackground.addEventListener('input', changeBackgroundColor);
+  eraseButton.addEventListener('click', generatePixelDivs);
 }
