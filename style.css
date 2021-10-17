@@ -4,9 +4,32 @@ body {
   margin: 0;
 }
 
-.header {
+.container,
+.drawing-area {
+  display: flex;
+}
+
+.header,
+.pickers,
+.menu,
+.buttons {
   display: flex;
   flex-direction: column;
+}
+
+.pickers,
+.menu,
+.buttons {
+  gap: 16px;
+}
+
+.wrapper,
+.drawing-area,
+.button {
+  border: 1px solid black;
+}
+
+.header {
   justify-content: center;
   align-items: center;
   background-color: #2B2A46;
@@ -14,7 +37,6 @@ body {
 }
 
 .container {
-  display: flex;
   justify-content: space-around;
   align-items: flex-start;
   margin: 16px 96px;
@@ -24,15 +46,6 @@ body {
   padding: 32px;
   background-color: #2B2A46;
   border-radius: 8px;
-  border: 1px solid black;
-}
-
-.pickers,
-.menu,
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .menu {
@@ -40,30 +53,27 @@ body {
 }
 
 .drawing-area {
-  display: flex;
   flex-wrap: wrap;
   height: 400px;
   width: 400px;
-  border: 1px solid black;
-}
-
-.button {
-  border: 1px solid black;
-  background-color: #2B2A80;
-  color: white;
-  padding: 8px 80px;
-  border-radius: 4px;
-  transition: 0.27s;
-}
-
-.button:hover {
-  background-color: #8B8A95;
 }
 
 .pixel {
   user-select: none;
   user-drag: none;
   transition: 0.2s;
+}
+
+.button {
+  background-color: #2B2A80;
+  color: white;
+  padding: 8px 80px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.button:hover {
+  background-color: #8B8A95;
 }
 
 .header-heading {
