@@ -8,7 +8,7 @@ const colorPickerBackground = document.querySelector('#color-picker-background')
 const buttons = document.querySelectorAll('[data-mode]');
 const coloringButton = document.querySelector('[data-mode="rainbow"]');
 const rainbowButton = document.querySelector('[data-mode="rainbow"]');
-const eraseButton = document.querySelector('#erase-button');
+const clearButton = document.querySelector('#clear-button');
 
 let chosenBrushColor = colorPickerBrush.value;
 let chosenBackgroundColor = colorPickerBackground.value; 
@@ -84,5 +84,5 @@ function addEventListeners() {
   colorPickerBackground.addEventListener('input', changeBackgroundColor);
 
   buttons.forEach(button => button.addEventListener('click', changeMode));
-  eraseButton.addEventListener('click', generatePixelDivs);
+  clearButton.addEventListener('click', generatePixelDivs);
 }
