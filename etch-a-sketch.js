@@ -14,7 +14,20 @@ let chosenBrushColor = colorPickerBrush.value;
 let chosenBackgroundColor = colorPickerBackground.value; 
 
 const RAINBOW_COLORS = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
-let mode = 'rainbow';
+const coloringModes = {
+  'coloring': function(e) {
+    e.target.style.backgroundColor = chosenBrushColor;
+  },
+  'rainbow': function(e) {
+    let rainbowColor = RAINBOW_COLORS[Math.ceil(Math.random() * 7) - 1];
+    e.target.style.backgroundColor = rainbowColor;
+    rainbowButton.style.backgroundColor = rainbowColor;
+  },
+  'erasing': function(e) {
+    e.target.style.removeProperty('background-color');
+  }
+};
+let currentMode = 'coloring';
 
 addEventListeners();
 refreshInputLabel();
@@ -43,14 +56,7 @@ function generatePixelDivs() {
 
 function changePixelColor(e) {
   if (e.buttons > 0) {
-    if (mode === 'coloring') {
-      e.target.style.backgroundColor = chosenBrushColor;
-    } else if (mode === 'rainbow') {
-      let rainbowColor = RAINBOW_COLORS[Math.ceil(Math.random() * 7) - 1];
-      e.target.style.backgroundColor = rainbowColor;
-      rainbowButton.style.backgroundColor = rainbowColor;
-    } else if (mode === 'erasing') {
-      e.target.style.backgroundColor = '';
+    coloringModes[mode];
     }
   }
 }
@@ -72,7 +78,7 @@ function refreshInputLabel() {
 function changeMode(e) {
   rainbowButton.style.backgroundColor = '';
   buttons.forEach(button => button.classList.remove('button-active'));
-  mode = e.target.dataset.mode;
+  currentMode = e.target.dataset.mode;
   e.target.classList.add('button-active');
 }
 
