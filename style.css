@@ -39,7 +39,7 @@ body {
 .container {
   justify-content: space-around;
   align-items: flex-start;
-  margin: 16px 96px;
+  margin: 16px 144px;
 }
 
 .wrapper {
@@ -54,8 +54,8 @@ body {
 
 .drawing-area {
   flex-wrap: wrap;
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 500px;
 }
 
 .pixel {

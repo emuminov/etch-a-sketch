@@ -18,7 +18,7 @@ function generatePixelDivs() {
   drawingAreaDiv.innerHTML = '';
 
   let numberOfDivs = drawingAreaSizePicker.value;
-  let sizeOfPixel  = (400 / numberOfDivs) + 'px';
+  let sizeOfPixel  = (500 / numberOfDivs) + 'px';
 
   for (let i = 0; i < (numberOfDivs ** 2); i++) {
     let drawingAreaPixel = document.createElement('div');
