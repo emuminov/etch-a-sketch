@@ -56,8 +56,7 @@ function generatePixelDivs() {
 
 function changePixelColor(e) {
   if (e.buttons > 0) {
-    coloringModes[mode];
-    }
+    coloringModes[currentMode](e);
   }
 }
 
