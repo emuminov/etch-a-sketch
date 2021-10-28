@@ -1,3 +1,4 @@
 # etch-a-sketch
 
-Simple etch-a-sketch drawing app!!
+![](img/example.png)
+Simple etch-a-sketch drawing app.
